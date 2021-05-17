@@ -1,0 +1,9 @@
+BeautifulSoup
+pandas
+numpy
+requests
+re
+time
+random
+datetime
+yagmail
