@@ -2,6 +2,4 @@ beautifulsoup4
 pandas
 numpy
 requests
-random
-datetime
 yagmail
