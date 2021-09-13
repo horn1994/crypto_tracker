@@ -56,7 +56,7 @@ while True:
                         get('https://coinmarketcap.com/currencies/{}/'.format(title_list[item])).text, 
                             'html.parser').find_all(
                             "div", 
-                            class_='priceValue___11gHJ')[0].text.replace(
+                            class_='priceValue')[0].text.replace(
                             '$','').replace(",", ""))
 
                 av_cryptos.append(title_list[item])
