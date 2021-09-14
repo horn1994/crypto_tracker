@@ -4,4 +4,3 @@ numpy
 requests
 yagmail
 gunicorn
-os
