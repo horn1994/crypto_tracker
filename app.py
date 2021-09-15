@@ -40,6 +40,12 @@ SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 SENDER_APP_PASSWORD = os.getenv("SENDER_APP_PASSWORD")
 RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
 
+test_sub = "Test mail"
+tect_cont = "Test content"
+
+with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
+            yag.send(RECEIVER_EMAIL, test_sub, tect_cont)
+
 while True:
     if datetime.now().time().hour != 0:
         av_cryptos = []
