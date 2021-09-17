@@ -49,9 +49,9 @@ counter_12 = 0
 #             yag.send(RECEIVER_EMAIL, test_sub, tect_cont)
 
 sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-from_email = Email("zoldterulet.project@gmail.com")  # Change to your verified sender
-to_email = To("hornpeti@gmail.com")  # Change to your recipient
-subject = "Sending with SendGrid is Fun"
+from_email = Email(os.environ.get('SENDER_EMAIL'))  # Change to your verified sender
+to_email = To(os.environ.get('RECEIVER_EMAIL'))  # Change to your recipient
+subject = "Try2"
 content = Content("text/plain", "and easy to do anywhere, even with Python")
 mail = Mail(from_email, to_email, subject, content)
 
