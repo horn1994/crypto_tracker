@@ -36,9 +36,9 @@ counter_1 = 0 #counter for 60 minute allerts
 counter_12 = 0
 
 
-SENDER_EMAIL = os.getenv("SENDER_EMAIL")
-SENDER_APP_PASSWORD = os.getenv("SENDER_APP_PASSWORD")
-RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
+SENDER_EMAIL = os.environ("SENDER_EMAIL")
+SENDER_APP_PASSWORD = os.environ("SENDER_APP_PASSWORD")
+RECEIVER_EMAIL = os.environ("RECEIVER_EMAIL")
 
 test_sub = "Test mail"
 tect_cont = "Test content"
