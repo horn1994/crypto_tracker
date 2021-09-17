@@ -2,6 +2,5 @@ beautifulsoup4
 pandas
 numpy
 requests
-yagmail
 gunicorn
 sendgrid
