@@ -38,15 +38,22 @@ counter_1 = 0 #counter for 60 minute allerts
 counter_12 = 0
 
 
-SENDER_EMAIL = os.environ("GMAIL_SMTP_USER")
-SENDER_APP_PASSWORD = os.environ("GMAIL_SMTP_PASSWORD")
-RECEIVER_EMAIL = "hornpeti@gmail.com"
+# SENDER_EMAIL = os.environ("GMAIL_SMTP_USER")
+# SENDER_APP_PASSWORD = os.environ("GMAIL_SMTP_PASSWORD")
+# RECEIVER_EMAIL = "hornpeti@gmail.com"
 
-test_sub = "Test mail"
-tect_cont = "Test content"
+# test_sub = "Test mail"
+# tect_cont = "Test content"
 
-with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
-            yag.send(RECEIVER_EMAIL, test_sub, tect_cont)
+# with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
+#             yag.send(RECEIVER_EMAIL, test_sub, tect_cont)
+
+sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+from_email = Email("zoldterulet.project@gmail.com")  # Change to your verified sender
+to_email = To("hornpeti@gmail.com")  # Change to your recipient
+subject = "Sending with SendGrid is Fun"
+content = Content("text/plain", "and easy to do anywhere, even with Python")
+mail = Mail(from_email, to_email, subject, content)
 
 while True:
     if datetime.now().time().hour != 0:
