@@ -36,8 +36,8 @@ counter_1 = 0 #counter for 60 minute allerts
 counter_12 = 0
 
 
-SENDER_EMAIL = os.environ("SENDGRID_USERNAME")
-SENDER_APP_PASSWORD = os.environ("SENDGRID_PASSWORD")
+SENDER_EMAIL = os.environ("GMAIL_SMTP_USER")
+SENDER_APP_PASSWORD = os.environ("GMAIL_SMTP_PASSWORD")
 RECEIVER_EMAIL = "hornpeti@gmail.com"
 
 test_sub = "Test mail"
