@@ -8,7 +8,7 @@ import re
 import time
 import random
 from datetime import datetime
-import yagmail
+#import yagmail
 import gunicorn
 import os
 import sendgrid
@@ -49,10 +49,10 @@ counter_12 = 0
 #             yag.send(RECEIVER_EMAIL, test_sub, tect_cont)
 
 sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-from_email = Email(os.environ.get('SENDER_EMAIL'))  # Change to your verified sender
-to_email = To(os.environ.get('RECEIVER_EMAIL'))  # Change to your recipient
-subject = "Try2"
-content = Content("text/plain", "and easy to do anywhere, even with Python")
+from_email = Email(os.environ.get('SENDER_EMAIL'))
+to_email = To(os.environ.get('RECEIVER_EMAIL'))
+subject = "Crypto tracker try"
+content = Content("text/plain", "Trying sendgrid")
 mail = Mail(from_email, to_email, subject, content)
 
 # Get a JSON-ready representation of the Mail object
@@ -117,12 +117,12 @@ while True:
 
             if len(big_price_inc) > 0:
                 subject = '20 minutes alert {}'.format(str(datetime.now()))
-                content = ["""List of cryptos with more than 5%-point 
-                              price increase in the last 20 minutes: """,
-                           str(big_price_inc)]
-
-                with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
-                    yag.send(RECEIVER_EMAIL, subject, content)
+                content = Content("text/plain", "List of cryptos with more than 5%-point price increase in the last 20 minutes: " +
+                                 str(big_price_inc))
+                mail = Mail(from_email, to_email, subject, content)
+                mail_json = mail.get()
+                response = sg.client.mail.send.post(request_body=mail_json)
+            
         else:
             pass
 
@@ -144,12 +144,11 @@ while True:
 
             if len(big_price_inc_60) > 0:
                 subject = '60 minutes alert {}'.format(str(datetime.now()))
-                content = ["""List of cryptos with more than 15%-point 
-                              price increase in the last 60 minutes: """,
-                           str(big_price_inc_60)]
-
-                with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
-                    yag.send(RECEIVER_EMAIL, subject, content)
+                content = Content("text/plain", "List of cryptos with more than 15%-point price increase in the last 60 minutes: " + 
+                                  str(big_price_inc_60))
+                mail = Mail(from_email, to_email, subject, content)
+                mail_json = mail.get()
+                response = sg.client.mail.send.post(request_body=mail_json)
 
         else:
             pass
@@ -172,12 +171,11 @@ while True:
 
             if len(big_price_inc_12hour) > 0:
                 subject = '12 hour alert {}'.format(str(datetime.now()))
-                content = ["""List of cryptos with more than 20%-point 
-                              price increase in the last 12 hours: """,
-                           str(big_price_inc_12hour)]
-
-                with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
-                    yag.send(RECEIVER_EMAIL, subject, content)
+                content = Content("text/plain", "List of cryptos with more than 20%-point price increase in the last 12 hours: " + 
+                                  str(big_price_inc_12hour))
+                mail = Mail(from_email, to_email, subject, content)
+                mail_json = mail.get()
+                response = sg.client.mail.send.post(request_body=mail_json)
 
         else:
             pass
@@ -193,13 +191,12 @@ while True:
                                          price_data[price_data.columns.to_list()[1]])))
 
         subject = 'Daily recap {}'.format(str(datetime.now()))
-        content = ["""Daily crypto price changes: """,
-                   str(price_diff_daily)]
+        content = Content("text/plain", "Daily crypto price changes: " + str(price_diff_daily))
+        mail = Mail(from_email, to_email, subject, content)
+        mail_json = mail.get()
+        response = sg.client.mail.send.post(request_body=mail_json)
 
-        with yagmail.SMTP(SENDER_EMAIL, SENDER_APP_PASSWORD) as yag:
-            yag.send(RECEIVER_EMAIL, subject, content)
-
-        print("reset time")
+        #print("reset time")
         time.sleep(3600)
         # save data (maybe to big dataframe? - maybe less important)
         price_data = pd.DataFrame()
