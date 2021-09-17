@@ -4,3 +4,4 @@ numpy
 requests
 yagmail
 gunicorn
+sendgrid
