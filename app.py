@@ -11,6 +11,8 @@ from datetime import datetime
 import yagmail
 import gunicorn
 import os
+import sendgrid
+from sendgrid.helpers.mail import Mail, Email, To, Content
 
 
 headers = ({'User-Agent':
