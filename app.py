@@ -36,8 +36,8 @@ counter_1 = 0 #counter for 60 minute allerts
 counter_12 = 0
 
 
-SENDER_EMAIL = os.environ("SENDER_EMAIL")
-SENDER_APP_PASSWORD = os.environ("SENDER_APP_PASSWORD")
+SENDER_EMAIL = os.environ("SENDGRID_USERNAME")
+SENDER_APP_PASSWORD = os.environ("SENDGRID_PASSWORD")
 RECEIVER_EMAIL = os.environ("RECEIVER_EMAIL")
 
 test_sub = "Test mail"
