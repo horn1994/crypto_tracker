@@ -38,7 +38,7 @@ counter_12 = 0
 
 SENDER_EMAIL = os.environ("SENDGRID_USERNAME")
 SENDER_APP_PASSWORD = os.environ("SENDGRID_PASSWORD")
-RECEIVER_EMAIL = os.environ("RECEIVER_EMAIL")
+RECEIVER_EMAIL = "hornpeti@gmail.com"
 
 test_sub = "Test mail"
 tect_cont = "Test content"
