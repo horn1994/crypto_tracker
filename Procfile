@@ -1,1 +1,1 @@
-worker: run -m app.worker
+web: run -m app.web
