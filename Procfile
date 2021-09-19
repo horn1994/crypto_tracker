@@ -1,1 +1,1 @@
-worker: lein run -m app.worker
+worker: run -m app.worker
